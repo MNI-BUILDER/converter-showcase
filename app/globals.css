@@ -1,280 +1,94 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* 
-  TAILWIND CSS IMPORTS:
-  - @tailwind base: Resets and base styles
-  - @tailwind components: Component classes
-  - @tailwind utilities: Utility classes
-*/
+@tailwind base; /* load Tailwind reset styles */
+@tailwind components; /* load Tailwind prebuilt components */
+@tailwind utilities; /* load Tailwind utility classes */
 
 @layer base {
-  /* 
-    BASE LAYER:
-    Custom base styles that extend Tailwind's base layer
-  */
-  
   :root {
-    /* 
-      CSS CUSTOM PROPERTIES (CSS Variables):
-      These define the color scheme for the entire application
-    */
-    --background: 222.2 84% 4.9%;           /* Very dark blue-gray */
-    --foreground: 210 40% 98%;              /* Almost white */
-    --card: 222.2 84% 4.9%;                 /* Same as background for seamless cards */
-    --card-foreground: 210 40% 98%;         /* White text on cards */
-    --popover: 222.2 84% 4.9%;              /* Dark popover background */
-    --popover-foreground: 210 40% 98%;      /* White popover text */
-    --primary: 262.1 83.3% 57.8%;           /* Purple primary color */
-    --primary-foreground: 210 40% 98%;      /* White text on primary */
-    --secondary: 217.2 32.6% 17.5%;         /* Dark secondary color */
-    --secondary-foreground: 210 40% 98%;    /* White text on secondary */
-    --muted: 217.2 32.6% 17.5%;             /* Muted background color */
-    --muted-foreground: 215 20.2% 65.1%;    /* Gray text for muted content */
-    --accent: 217.2 32.6% 17.5%;            /* Accent background */
-    --accent-foreground: 210 40% 98%;       /* White text on accent */
-    --destructive: 0 62.8% 30.6%;           /* Red for destructive actions */
-    --destructive-foreground: 210 40% 98%;  /* White text on destructive */
-    --border: 217.2 32.6% 17.5%;            /* Border color */
-    --input: 217.2 32.6% 17.5%;             /* Input background */
-    --ring: 262.1 83.3% 57.8%;              /* Focus ring color (purple) */
-    --radius: 0.75rem;                      /* Default border radius (12px) */
-    --chart-1: 220 70% 50%;                 /* Chart color 1 */
-    --chart-2: 160 60% 45%;                 /* Chart color 2 */
-    --chart-3: 30 80% 55%;                  /* Chart color 3 */
-    --chart-4: 280 65% 60%;                 /* Chart color 4 */
-    --chart-5: 340 75% 55%;                 /* Chart color 5 */
+    --background: 222.2 84% 4.9%; /* dark background used for page */
+    --foreground: 210 40% 98%; /* light text color */
+    --card: 222.2 84% 4.9%; /* card uses same background */
+    --card-foreground: 210 40% 98%; /* text on card stays light */
+    --primary: 262.1 83.3% 57.8%; /* purple main brand color */
+    --primary-foreground: 210 40% 98%; /* white text on purple */
+    --secondary: 217.2 32.6% 17.5%; /* darker tone for secondary areas */
+    --secondary-foreground: 210 40% 98%; /* white text on secondary */
+    --muted: 217.2 32.6% 17.5%; /* dim background shade */
+    --muted-foreground: 215 20.2% 65.1%; /* gray text for muted areas */
+    --accent: 217.2 32.6% 17.5%; /* accent shares same dark tone */
+    --accent-foreground: 210 40% 98%; /* white text for accent */
+    --destructive: 0 62.8% 30.6%; /* red used for danger actions */
+    --destructive-foreground: 210 40% 98%; /* white on danger buttons */
+    --border: 217.2 32.6% 17.5%; /* border shade */
+    --input: 217.2 32.6% 17.5%; /* input background shade */
+    --ring: 262.1 83.3% 57.8%; /* purple ring on focus */
+    --radius: 0.75rem; /* default rounded corners */
   }
 }
 
 @layer base {
-  /* 
-    GLOBAL BASE STYLES:
-    These styles apply to the entire document
-  */
-  
-  * {
-    /* 
-      UNIVERSAL SELECTOR:
-      Applies to all elements
-    */
-    @apply border-border;
-    /* Uses the CSS variable defined above for consistent borders */
-  }
-  
-  body {
-    /* 
-      BODY STYLES:
-      Sets the overall appearance of the page
-    */
-    @apply bg-background text-foreground;
-    /* 
-      - bg-background: Uses the dark background color variable
-      - text-foreground: Uses the light text color variable
-      This creates the dark theme foundation
-    */
-  }
+  * { @apply border-border; } /* every element gets consistent border color */
+  body { @apply bg-background text-foreground; } /* page background dark, text light */
 }
 
-/* 
-  CUSTOM ANIMATIONS:
-  These extend Tailwind's built-in animations
-*/
-
+/* Animations */
 @keyframes float {
-  /* 
-    FLOATING ANIMATION:
-    Creates a gentle up-and-down floating effect
-  */
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); } /* start/end in same place */
+  50% { transform: translateY(-10px); } /* move element up mid-way */
 }
 
 @keyframes glow {
-  /* 
-    GLOW ANIMATION:
-    Creates a pulsing glow effect using box-shadow
-  */
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
-  }
+  0%, 100% { box-shadow: 0 0 20px rgba(168,85,247,0.4); } /* faint glow */
+  50% { box-shadow: 0 0 40px rgba(168,85,247,0.8); } /* stronger glow pulse */
 }
 
 @keyframes shimmer {
-  /* 
-    SHIMMER ANIMATION:
-    Creates a moving highlight effect across elements
-  */
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; } /* start highlight left side */
+  100% { background-position: 200% 0; } /* slide highlight to right */
 }
 
-.animate-float {
-  /* 
-    FLOAT UTILITY CLASS:
-    Applies the floating animation with timing
-  */
-  animation: float 3s ease-in-out infinite;
+.animate-float { animation: float 3s ease-in-out infinite; } /* smooth up-down float */
+.animate-glow { animation: glow 2s ease-in-out infinite; } /* glowing effect loop */
+.animate-shimmer { 
+  animation: shimmer 2s linear infinite; /* moving shine */
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); /* shiny strip */
+  background-size: 200% 100%; /* make shine cover double width */
 }
 
-.animate-glow {
-  /* 
-    GLOW UTILITY CLASS:
-    Applies the glow animation with timing
-  */
-  animation: glow 2s ease-in-out infinite;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; } /* slim scrollbar */
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 4px; } /* faint track */
+::-webkit-scrollbar-thumb { background: linear-gradient(45deg,#8b5cf6,#ec4899); border-radius: 4px; } /* gradient thumb */
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(45deg,#7c3aed,#db2777); } /* darker when hovered */
 
-.animate-shimmer {
-  /* 
-    SHIMMER UTILITY CLASS:
-    Applies the shimmer animation with timing and background setup
-  */
-  animation: shimmer 2s linear infinite;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  background-size: 200% 100%;
-}
+/* Text selection */
+::selection { background: rgba(168,85,247,0.3); color: white; } /* purple highlight on selection */
+::-moz-selection { background: rgba(168,85,247,0.3); color: white; } /* firefox version */
 
-/* 
-  SCROLLBAR CUSTOMIZATION:
-  Custom scrollbar styles for better visual integration
-*/
+/* Focus ring */
+.focus-ring { 
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900; 
+} /* purple ring on focus */
 
-::-webkit-scrollbar {
-  /* 
-    SCROLLBAR WIDTH:
-    Makes scrollbars thinner for a more modern look
-  */
-  width: 8px;
-}
+.glass { 
+  background: rgba(255,255,255,0.05); /* transparent background */
+  backdrop-filter: blur(20px); /* blur behind */
+  border: 1px solid rgba(255,255,255,0.1); /* light border */
+} /* glassy panel effect */
 
-::-webkit-scrollbar-track {
-  /* 
-    SCROLLBAR TRACK:
-    The background area of the scrollbar
-  */
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
+.glass-strong { 
+  background: rgba(255,255,255,0.1); /* stronger white background */
+  backdrop-filter: blur(24px); /* heavier blur */
+  border: 1px solid rgba(255,255,255,0.2); 
+} /* stronger glass style */
 
-::-webkit-scrollbar-thumb {
-  /* 
-    SCROLLBAR THUMB:
-    The draggable part of the scrollbar
-  */
-  background: linear-gradient(45deg, #8b5cf6, #ec4899);
-  border-radius: 4px;
-}
+.gradient-text { 
+  background: linear-gradient(45deg,#06b6d4,#8b5cf6,#ec4899); /* rainbow gradient */
+  -webkit-background-clip: text; background-clip: text; /* clip gradient to text */
+  -webkit-text-fill-color: transparent; /* make only gradient visible */
+} /* gradient colored text */
 
-::-webkit-scrollbar-thumb:hover {
-  /* 
-    SCROLLBAR THUMB HOVER:
-    Darker color when hovering over the scrollbar
-  */
-  background: linear-gradient(45deg, #7c3aed, #db2777);
-}
-
-/* 
-  SELECTION STYLES:
-  Custom text selection colors
-*/
-
-::selection {
-  /* 
-    TEXT SELECTION:
-    Custom colors when users select text
-  */
-  background: rgba(168, 85, 247, 0.3);
-  color: white;
-}
-
-::-moz-selection {
-  /* 
-    FIREFOX TEXT SELECTION:
-    Firefox-specific selection styles
-  */
-  background: rgba(168, 85, 247, 0.3);
-  color: white;
-}
-
-/* 
-  FOCUS STYLES:
-  Enhanced focus indicators for accessibility
-*/
-
-.focus-ring {
-  /* 
-    CUSTOM FOCUS RING:
-    Reusable focus ring style
-  */
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
-}
-
-/* 
-  GLASS MORPHISM UTILITIES:
-  Reusable glass effect classes
-*/
-
-.glass {
-  /* 
-    GLASS EFFECT:
-    Creates the glass morphism effect used throughout the app
-  */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-strong {
-  /* 
-    STRONGER GLASS EFFECT:
-    More pronounced glass effect for important elements
-  */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* 
-  GRADIENT TEXT UTILITIES:
-  Reusable gradient text effects
-*/
-
-.gradient-text {
-  /* 
-    GRADIENT TEXT:
-    Creates gradient text effect
-  */
-  background: linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
+.gradient-text-purple { 
+  background: linear-gradient(45deg,#8b5cf6,#ec4899); /* purple-pink gradient */
+  -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-purple {
-  /* 
-    PURPLE GRADIENT TEXT:
-    Purple-focused gradient for headings
-  */
-  background: linear-gradient(45deg, #8b5cf6, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+} /* purple gradient text */
